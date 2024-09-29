@@ -60,4 +60,4 @@ jobs:
           StrictHostKeyChecking no
         END
     - run: |
-        ssh staging
+        ssh staging "touch hello.txt"
