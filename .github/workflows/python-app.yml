@@ -52,6 +52,6 @@ jobs:
         # Set the correct permissions
         chmod 600 ~/.ssh/id_rsa
         # Optionally, add the host to known_hosts to prevent host verification prompts
-        ssh-keyscan -H your.remote.server.com >> ~/.ssh/known_hosts
+        ssh-keyscan -H 13.60.222.130 >> ~/.ssh/known_hosts
     - run: |
         ssh -o StrictHostKeyChecking=no ubuntu@13.60.222.130
