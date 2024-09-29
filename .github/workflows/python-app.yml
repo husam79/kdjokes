@@ -37,3 +37,13 @@ jobs:
     - name: Test with unittest
       run: |
         python -m unittest discover tests/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: |
+        echo "${{ secrets.SSH_KEY }}" > kashkul.pem
+        chmod 606 kashkul.pem
+        ssh -i kashkul.pem "${{ vars.DEPLOYMENT_SERVER_USER }}@${{ vars.DEPLOYMENT_SERVER_IP }}"
