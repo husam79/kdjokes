@@ -43,7 +43,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set up SSH
+      run: |
+        # Create the SSH directory
+        mkdir -p ~/.ssh
+        # Add the SSH private key from the secret
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        # Set the correct permissions
+        chmod 600 ~/.ssh/id_rsa
+        # Optionally, add the host to known_hosts to prevent host verification prompts
+        ssh-keyscan -H your.remote.server.com >> ~/.ssh/known_hosts
     - run: |
-        echo "${{ secrets.SSH_KEY }}" > kashkul.pem
-        chmod 606 kashkul.pem
-        ssh -i kashkul.pem "${{ vars.DEPLOYMENT_SERVER_USER }}@${{ vars.DEPLOYMENT_SERVER_IP }}"
+        ssh -o StrictHostKeyChecking=no ubuntu@13.60.222.130
