@@ -5,19 +5,21 @@ from fastapi.responses import HTMLResponse, JSONResponse
 app = FastAPI()
 templates = Jinja2Templates(directory='templates')
 
+def get_joke():
+    return "This is my new joke!!"
 
 @app.get('/')
 def greet():
-  return JSONResponse(status_code=200, content={"joke": "my nice joke!"})
+  return JSONResponse(status_code=200, content={"joke": get_joke()})
 
 
 @app.get('/text/')
 def greet_text():
-  return "hello!"
+  return get_joke()
 
 
 @app.get('/pretty/', response_class=HTMLResponse)
 def greet_pretty(request: Request):
-  return templates.TemplateResponse('joke_template.html', {'request': request, 'joke': 'Hello!!!!'})
+  return templates.TemplateResponse('joke_template.html', {'request': request, 'joke': get_joke()})
 
 
