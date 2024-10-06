@@ -11,7 +11,7 @@ class JokeTesting(unittest.TestCase):
     def test_joke_random_choosing(self, mock_file):
         joke = get_joke()
         mock_file.assert_called_once_with("jokes.json", 'r')
-        self.assertIn(joke, ["Joke 11", "Joke 12", "Joke 13"])
+        self.assertIn(joke, ["Joke 1", "Joke 2", "Joke 3"])
         
 
 if __name__ == 'main':
