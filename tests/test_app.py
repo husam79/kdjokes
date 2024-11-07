@@ -5,7 +5,7 @@ from main import get_joke
 class JokeTesting(unittest.TestCase):
     def test_joke_length(self):
         joke = get_joke()
-        self.assertGreater(len(joke), 10)
+        self.assertGreater(len(joke), 80)
     
     @patch('builtins.open', new_callable=mock_open, read_data='[{"joke": "Joke 1"}, {"joke": "Joke 2"}, {"joke": "Joke 3"}]')
     def test_joke_random_choosing(self, mock_file):
