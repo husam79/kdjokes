@@ -4,15 +4,15 @@
 name: Python application
 
 on:
-  push:
+  # push:
     # branches:
     #   - main
-    pull_request:
+  pull_request:
       branches:
-        - main
+      - main
 
 permissions:
-  contents: read
+contents: read
 
 jobs:
   build:
