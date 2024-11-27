@@ -1,8 +1,6 @@
 from fastapi import FastAPI, Request, Depends, Query
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, JSONResponse
-import json
-from random import choice
 from sqlmodel import select, SQLModel, create_engine, Session
 from contextlib import asynccontextmanager
 from typing import Annotated
